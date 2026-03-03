@@ -1,0 +1,28 @@
+# Netbeans
+build/
+nbproject/private/
+nbproject/incremental/
+nbproject/genfiles.properties
+nbproject/project.xml.bak
+
+# Sensitive data
+src/java/db.properties
+web/WEB-INF/classes/db.properties
+
+# Compiled classes
+*.class
+web/WEB-INF/classes/
+
+# Output directories
+dist/
+nbdist/
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
