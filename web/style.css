@@ -1,0 +1,675 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 2, 2026, 8:18:30 PM
+    Author     : mathu
+*/
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background-color: #f8fafc;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Login Page */
+.login-page {
+    background: url('https://images.unsplash.com/photo-1581859814481-bfd944e3122f?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    width: 420px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-header {
+    background: rgba(0, 90, 140, 0.7);
+    color: white;
+    padding: 25px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-header h1 {
+    font-size: 26px;
+    margin-bottom: 5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.login-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.login-form {
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.login-form h2 {
+    margin-bottom: 25px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+}
+
+.error-message {
+    background: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid #c62828;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    /* Default dark text */
+}
+
+/* Glassmorphism overrides for Login Page */
+.login-page .form-group label {
+    color: #ffffff;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: #ffffff;
+    /* Default white background */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #1a1a1a;
+    /* Default dark text */
+    transition: all 0.3s ease;
+}
+
+.login-page .form-group input,
+.login-page .form-group select,
+.login-page .form-group textarea {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+.form-group input::placeholder {
+    color: #999;
+}
+
+.login-page .form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #005a8c;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    background: #005a8c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(0, 90, 140, 0.2);
+}
+
+.btn-login:hover {
+    background: #00466d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 90, 140, 0.3);
+}
+
+.login-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+}
+
+/* Header */
+.header {
+    background: #005a8c;
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1 {
+    font-size: 28px;
+}
+
+.logout-link {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.logout-link:hover {
+    background: white;
+    color: #005a8c;
+}
+
+/* Navigation Menu */
+.nav-menu {
+    background: #333;
+    overflow: hidden;
+    border-bottom: 3px solid #005a8c;
+}
+
+.nav-menu a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.nav-menu a:hover {
+    background: #005a8c;
+}
+
+.nav-menu a.active {
+    background: #005a8c;
+}
+
+/* Main Content */
+.main-content {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.main-content h2 {
+    color: #005a8c;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #005a8c;
+}
+
+/* Rooms Grid */
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.room-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.room-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.room-details {
+    padding: 20px;
+}
+
+.room-details h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.room-details p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.room-rate {
+    font-size: 20px;
+    font-weight: bold;
+    color: #005a8c;
+    margin: 15px 0;
+}
+
+.btn-book {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #005a8c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-book:hover {
+    background: #003f5c;
+}
+
+/* Form Sections */
+.form-section {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h3 {
+    color: #005a8c;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.btn-submit {
+    padding: 15px 30px;
+    background: #005a8c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background: #003f5c;
+}
+
+.btn-calculate {
+    padding: 15px 30px;
+    background: #28a745;
+    /* Green color for calculate */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-right: 15px;
+}
+
+.btn-calculate:hover {
+    background: #218838;
+}
+
+/* Bill Preview */
+.bill-preview {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border: 2px dashed #005a8c;
+}
+
+.bill-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.bill-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.bill-table tr:last-child td {
+    border-bottom: none;
+}
+
+.total-row {
+    font-size: 20px;
+    font-weight: bold;
+    color: #005a8c;
+}
+
+/* Reservation Details */
+.reservation-details {
+    display: grid;
+    gap: 30px;
+}
+
+.detail-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.detail-card h3 {
+    color: #005a8c;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.details-table th,
+.details-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.details-table th {
+    width: 40%;
+    color: #666;
+    font-weight: normal;
+}
+
+.details-table td {
+    color: #333;
+    font-weight: bold;
+}
+
+.status-confirmed {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.status-pending {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.status-cancelled {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.amount {
+    font-size: 24px;
+    color: #005a8c;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-view-bill,
+.btn-back,
+.btn-print {
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+}
+
+.btn-view-bill {
+    background: #28a745;
+    color: white;
+}
+
+.btn-back {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-print {
+    background: #005a8c;
+    color: white;
+}
+
+.btn-view-bill:hover {
+    background: #218838;
+}
+
+.btn-back:hover {
+    background: #545b62;
+}
+
+.btn-print:hover {
+    background: #003f5c;
+}
+
+/* Bill Container */
+.bill-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.bill-container h1 {
+    color: #005a8c;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.bill-container h2 {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.bill-container hr {
+    margin: 20px 0;
+    border: 1px solid #eee;
+}
+
+.bill-container p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.bill-container .btn {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background: #005a8c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.bill-container .btn:hover {
+    background: #003f5c;
+}
+
+/* Help Section */
+.help-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.help-section {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.help-section:last-child {
+    border-bottom: none;
+}
+
+.help-section h3 {
+    color: #005a8c;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.help-section p {
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+
+.help-section ul,
+.help-section ol {
+    margin: 10px 0 10px 30px;
+    color: #666;
+    line-height: 1.8;
+}
+
+.help-section li {
+    margin-bottom: 5px;
+}
+
+.help-section .note {
+    background: #fff3cd;
+    color: #856404;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border-left: 4px solid #ffc107;
+}
+
+.help-footer {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    text-align: center;
+    color: #6c757d;
+}
+
+/* Footer */
+.footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .rooms-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .login-container {
+        width: 90%;
+    }
+
+    .nav-menu a {
+        float: none;
+        width: 100%;
+    }
+}
+
+/* Print Styles */
+@media print {
+
+    .header,
+    .nav-menu,
+    .footer,
+    .action-buttons,
+    .btn-print {
+        display: none;
+    }
+
+    .main-content {
+        margin: 0;
+        padding: 0;
+    }
+
+    .bill-container {
+        box-shadow: none;
+        padding: 20px;
+    }
+}
