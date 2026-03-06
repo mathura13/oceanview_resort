@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <style>
             .signup-page {
-                background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+                background: linear-gradient(135deg, #0f172a, #1e3a8a, #3b82f6);
                 height: 100vh;
                 display: flex;
                 align-items: center;
