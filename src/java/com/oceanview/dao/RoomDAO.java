@@ -33,28 +33,46 @@ public class RoomDAO {
         return connection;
     }
 
-    public List<Room> getAllRooms() {
+    public List<Room> getAvailableRooms() {
         List<Room> rooms = new ArrayList<>();
         String query = "SELECT * FROM rooms WHERE status = 'available'";
 
         try (Statement stmt = getConnection().createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
-
             while (rs.next()) {
-                Room room = new Room();
-                room.setRoomId(rs.getInt("room_id"));
-                room.setRoomNumber(rs.getString("room_number"));
-                room.setRoomType(rs.getString("room_type"));
-                room.setRatePerNight(rs.getDouble("rate_per_night"));
-                room.setDescription(rs.getString("description"));
-                room.setImagePath(rs.getString("image_path"));
-                room.setStatus(rs.getString("status"));
-                rooms.add(room);
+                rooms.add(mapRowToRoom(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return rooms;
+    }
+
+    public List<Room> getAllRooms() {
+        List<Room> rooms = new ArrayList<>();
+        String query = "SELECT * FROM rooms";
+
+        try (Statement stmt = getConnection().createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                rooms.add(mapRowToRoom(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rooms;
+    }
+
+    private Room mapRowToRoom(ResultSet rs) throws SQLException {
+        Room room = new Room();
+        room.setRoomId(rs.getInt("room_id"));
+        room.setRoomNumber(rs.getString("room_number"));
+        room.setRoomType(rs.getString("room_type"));
+        room.setRatePerNight(rs.getDouble("rate_per_night"));
+        room.setDescription(rs.getString("description"));
+        room.setImagePath(rs.getString("image_path"));
+        room.setStatus(rs.getString("status"));
+        return room;
     }
 
     public Room getRoomById(int roomId) {
@@ -111,7 +129,8 @@ public class RoomDAO {
 
     public java.util.Map<String, Double> getRoomRatesMap() {
         java.util.Map<String, Double> rates = new java.util.HashMap<>();
-        String query = "SELECT DISTINCT room_type, rate_per_night FROM rooms";
+        // Only show room types that have at least one 'available' room
+        String query = "SELECT DISTINCT room_type, rate_per_night FROM rooms WHERE status = 'available'";
         try (Statement stmt = getConnection().createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
@@ -121,5 +140,17 @@ public class RoomDAO {
             e.printStackTrace();
         }
         return rates;
+    }
+
+    public boolean updateRoomStatus(int roomId, String status) {
+        String query = "UPDATE rooms SET status = ? WHERE room_id = ?";
+        try (PreparedStatement pstmt = getConnection().prepareStatement(query)) {
+            pstmt.setString(1, status);
+            pstmt.setInt(2, roomId);
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
